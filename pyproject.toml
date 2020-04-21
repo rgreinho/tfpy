@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "tfpy"
+version = "0.1.0"
+description = "Create Terraform resources using Python"
+authors = ["Rémy Greinhofer <remy.greinhofer@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+terraformpy = "1.2.3"
+typer = "^0.1.1"
+pyyaml = "^5.3.1"
+
+[tool.poetry.dev-dependencies]
+bpython = "0.18"
+black = "^19.10b0"
+pytest = "^5.4.1"
+invoke = "^1.4.1"
+
+[tool.poetry.scripts]
+tfpy = "cirrostratus.main:app"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
