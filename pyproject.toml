@@ -24,6 +24,8 @@ flake8 = "^3.7.9"
 Faker = "^4.0.3"
 Sphinx = "^3.0.2"
 pytest-mock = "^3.1.0"
+recommonmark = "^0.6.0"
+aiohttp-theme = "^0.1.6"
 
 [tool.poetry.scripts]
 tfpy = "tfpy.main:app"
