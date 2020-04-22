@@ -4,6 +4,27 @@ version = "0.1.0"
 description = "Create Terraform resources using Python"
 authors = ["Rémy Greinhofer <remy.greinhofer@gmail.com>"]
 license = "MIT"
+readme = "README.rst"
+homepage = "https://rgreinho.github.io/tfpy"
+repository = "https://github.com/rgreinho/tfpy"
+documentation = "https://rgreinho.github.io/tfpy"
+keywords = [
+  "terraform"
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Environment :: Console",
+  "Intended Audience :: End Users/Desktop",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: POSIX :: Linux",
+  "Operating System :: MacOS :: MacOS X",
+  "Operating System :: Microsoft :: Windows",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Topic :: Utilities",
+]
 
 [tool.poetry.dependencies]
 python = "^3.7"
