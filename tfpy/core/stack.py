@@ -1,9 +1,12 @@
+"""Define the module managing the stack vars."""
 from pathlib import Path
 
 import yaml
 
 
 class StackVars:
+    """Define the object managing the stack vars."""
+
     def __init__(self, stack, environment="", var_dir="."):
         """."""
         self.stack = stack
@@ -25,7 +28,8 @@ class StackVars:
             e = self.var_dir / self.environment / self.stack
             if not e.exists():
                 raise ValueError(
-                    f'cannot find variables for the stack "{self.stack}" in the "{self.environment}" environment'
+                    f'cannot find variables for the stack "{self.stack}" '
+                    f'in the "{self.environment}" environment'
                 )
             var_files += list(e.glob("**/*.yml"))
 
@@ -39,18 +43,17 @@ class StackVars:
             d = {**d, **yaml.safe_load(f.read_text())}
         self.vars = d
 
-    def get(self, var, default=None, silent_fail=True, separator="."):
+    def get(self, var, default=None, separator="."):
         """
-        Retrieves a value matching a key in the config file.
+        Retrieve a value matching a key in the config file.
 
         :param var: the var to look for
         :param default: the default value to return if the key is not found
-        :param silent_fail: if true, returns the default value if the key is not found, otherwise raises an exception
         :return: the value matching the key
         """
         # Ensure we have a configuration.
         if not self.vars:
-            raise ValueError("no variable files were loaded")
+            raise LookupError("no variable files were loaded")
 
         # Split the keys.
         key_list = var.split(separator)
@@ -72,9 +75,9 @@ class StackVars:
         if value:
             return value
 
-        # Otherwise return the default value.
-        if silent_fail:
+        # Otherwise return the default value if provided.
+        if default:
             return default
 
         # Or raise an exception.
-        raise ValueError(f"variable {var} not found.")
+        raise LookupError(f"variable {var} not found.")

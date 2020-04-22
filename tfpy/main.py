@@ -1,4 +1,4 @@
-import importlib.util
+"""Define the application entrypoint."""
 import os
 
 import typer
@@ -11,7 +11,8 @@ app = typer.Typer()
 
 @app.command()
 def generate(stack: str, environment: str = ""):
-    stackvars = StackVars(stack, environment=environment, var_dir=os.getcwd(),)
+    """Generate Terraform stacks."""
+    _ = StackVars(stack, environment=environment, var_dir=os.getcwd(),)
 
 
 if __name__ == "__main__":
