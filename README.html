@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>tfpy &#8212; tfpy 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/aiohttp.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Changelog" href="CHANGELOG.html" />
+    <link rel="prev" title="tfpy" href="index.html" />
+ 
+<link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+
+<link rel="canonical" href="https://github.com/rgreinho/tfpyREADME.html"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+<link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet">
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tfpy">
+<h1>tfpy<a class="headerlink" href="#tfpy" title="Permalink to this headline">¶</a></h1>
+<img alt="https://github.com/shipstation/octopy/workflows/ci/badge.svg" src="https://github.com/shipstation/octopy/workflows/ci/badge.svg" /><p>Create Terraform resources using Python.</p>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">tfpy</span></code> is a thin wrapper around <a class="reference external" href="https://github.com/NerdWalletOSS/terraformpy">terraformpy</a>, aiming at providing a well defined
+structure to organize your <a class="reference external" href="https://www.terraform.io">terraform</a> stacks and leverage the power of Python to
+define them rather than using <a class="reference external" href="https://github.com/hashicorp/hcl">HCL</a>.</p>
+<p>For more information regarding how to create your stacks, please refer to the official
+<a class="reference external" href="https://github.com/NerdWalletOSS/terraformpy">terraformpy</a> documentation.</p>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>tfpy requires Python 3.7+ to work</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">tfpy</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">tfpy</span></code> command needs to be run at the root of your project.</p>
+<p>The output will be created in a new subfolder within your project, named <code class="docutils literal notranslate"><span class="pre">generated</span></code>.
+For instance <code class="docutils literal notranslate"><span class="pre">generated/gke/production/main.tf.json</span></code></p>
+<div class="section" id="project-layout">
+<h3>Project layout<a class="headerlink" href="#project-layout" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.
+├── stacks
+│   ├── gke
+│   │   └── main.tf.py
+│   ├── organization
+│   │   └── main.tf.py
+│   └── postgresql
+│       └── main.tf.py
+└── vars
+    ├── all
+    │   ├── config.yml
+    │   ├── gke                   # Optional subfolder with the stack name to group
+    │   │   └── gke.yml           # yaml files together if necessary.
+    │   ├── organization.yml
+    │   └── postgresql
+    │       └── postgresql.yml
+    ├── config,yml
+    ├── production
+    │   ├── gke
+    │   │   └── gke.yml
+    │   └── postgresql
+    │       └── postgresql.yml
+    └── staging
+        ├── gke
+        │   └── gke.yml
+        └── postgresql
+            └── postgresql.yml
+</pre></div>
+</div>
+</div>
+<div class="section" id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<p>Build a stack without an environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tfpy</span> <span class="n">organization</span>
+</pre></div>
+</div>
+<p>Build a stack for a specific environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tfpy</span> <span class="n">gke</span> <span class="n">production</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">tfpy</a></h1>
+
+
+
+<p class="blurb">Create Terraform resources using Python</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=rgreinho&repo=tfpy&type=star&count=False&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">tfpy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
+</ul>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Rémy Greinhofer.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.2</a>
+      
+      |
+      <a href="_sources/README.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/rgreinho/tfpy" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>
