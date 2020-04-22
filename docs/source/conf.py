@@ -56,7 +56,7 @@ source_suffix = {
 
 # -- Options for HTML output -------------------------------------------------
 
-html_static_path = ["_static"]
+# html_static_path = ["_static"]
 html_theme_path = [aiohttp_theme.get_path()]
 html_theme = "aiohttp_theme"
 html_theme_options = {

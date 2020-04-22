@@ -1,0 +1,12 @@
+config:
+  terraform:
+    version: ">= 0.12.24"
+    backend:
+      gcp:
+        bucket: "terraform-tfstate-engineering"
+  gcp:
+    region: "us-central1"
+    project: "engineering-267221"
+    version: "~> 3.3.0"
+    credentials: "~/.config/project/engineering-267221-56a833b41468.json"
+    zone: "us-central1-f"

@@ -30,6 +30,7 @@ docs/_build/
 downloads/
 eggs/
 env/
+examples/example-01/generated/
 htmlcov/
 lib/
 lib64/
