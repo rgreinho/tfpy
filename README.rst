@@ -1,7 +1,7 @@
 tfpy
 ====
 
-.. image:: https://github.com/shipstation/octopy/workflows/ci/badge.svg
+.. image:: https://github.com/rgreinho/tfpy/workflows/ci/badge.svg
 
 Create Terraform resources using Python.
 
