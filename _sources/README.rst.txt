@@ -1,7 +1,7 @@
 tfpy
 ====
 
-.. image:: https://github.com/shipstation/octopy/workflows/ci/badge.svg
+.. image:: https://github.com/rgreinho/tfpy/workflows/ci/badge.svg
 
 Create Terraform resources using Python.
 
@@ -11,6 +11,9 @@ Description
 ``tfpy`` is a thin wrapper around `terraformpy`_, aiming at providing a well defined
 structure to organize your `terraform`_ stacks and leverage the power of Python to
 define them rather than using `HCL`_.
+
+The goal is to have a repository layout inspired from `Ansible <https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html#directory-layout>`_
+where the stacks are driven by the variables.
 
 For more information regarding how to create your stacks, please refer to the official
 `terraformpy`_ documentation.
@@ -38,41 +41,40 @@ Project layout
 ::
 
   .
+  ├── generated
+  │   └── commerce
+  │       └── staging
+  │           └── main.tf.json
+  ├── library
+  │   ├── backend.py
+  │   └── provider.py
   ├── stacks
-  │   ├── gke
-  │   │   └── main.tf.py
-  │   ├── organization
-  │   │   └── main.tf.py
-  │   └── postgresql
-  │       └── main.tf.py
+  │   └── commerce
+  │       ├── README.md
+  │       ├── gke.tf.py
+  │       └── terraform.tf.py
   └── vars
       ├── all
-      │   ├── config.yml
-      │   ├── gke                   # Optional subfolder with the stack name to group
-      │   │   └── gke.yml           # yaml files together if necessary.
-      │   ├── organization.yml
-      │   └── postgresql
-      │       └── postgresql.yml
-      ├── config,yml
-      ├── production
-      │   ├── gke
-      │   │   └── gke.yml
-      │   └── postgresql
-      │       └── postgresql.yml
+      │   ├── cartigan.yml
+      │   └── config.yml
       └── staging
-          ├── gke
-          │   └── gke.yml
-          └── postgresql
-              └── postgresql.yml
+          └── commerce
+              ├── gke.yml
+              └── project.yml
+
+* ``generated``: folder where the stack are stored as JSON once generated.
+* ``library``: folder where you can place custom functions.
+* ``stacks``: the stacks created using TerraformPy.
+* ``vars``: the variables used to create the stacks.
 
 Examples
 ^^^^^^^^
 
-Build a stack without an environment::
+Build a project stack without an environment::
 
   tfpy organization
 
-Build a stack for a specific environment::
+Build a project stack for a specific environment::
 
   tfpy gke production
 

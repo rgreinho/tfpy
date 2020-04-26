@@ -35,12 +35,14 @@
             
   <div class="section" id="tfpy">
 <h1>tfpy<a class="headerlink" href="#tfpy" title="Permalink to this headline">¶</a></h1>
-<img alt="https://github.com/shipstation/octopy/workflows/ci/badge.svg" src="https://github.com/shipstation/octopy/workflows/ci/badge.svg" /><p>Create Terraform resources using Python.</p>
+<img alt="https://github.com/rgreinho/tfpy/workflows/ci/badge.svg" src="https://github.com/rgreinho/tfpy/workflows/ci/badge.svg" /><p>Create Terraform resources using Python.</p>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">tfpy</span></code> is a thin wrapper around <a class="reference external" href="https://github.com/NerdWalletOSS/terraformpy">terraformpy</a>, aiming at providing a well defined
 structure to organize your <a class="reference external" href="https://www.terraform.io">terraform</a> stacks and leverage the power of Python to
 define them rather than using <a class="reference external" href="https://github.com/hashicorp/hcl">HCL</a>.</p>
+<p>The goal is to have a repository layout inspired from <a class="reference external" href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html#directory-layout">Ansible</a>
+where the stacks are driven by the variables.</p>
 <p>For more information regarding how to create your stacks, please refer to the official
 <a class="reference external" href="https://github.com/NerdWalletOSS/terraformpy">terraformpy</a> documentation.</p>
 </div>
@@ -59,42 +61,42 @@ For instance <code class="docutils literal notranslate"><span class="pre">genera
 <div class="section" id="project-layout">
 <h3>Project layout<a class="headerlink" href="#project-layout" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.
+├── generated
+│   └── commerce
+│       └── staging
+│           └── main.tf.json
+├── library
+│   ├── backend.py
+│   └── provider.py
 ├── stacks
-│   ├── gke
-│   │   └── main.tf.py
-│   ├── organization
-│   │   └── main.tf.py
-│   └── postgresql
-│       └── main.tf.py
+│   └── commerce
+│       ├── README.md
+│       ├── gke.tf.py
+│       └── terraform.tf.py
 └── vars
     ├── all
-    │   ├── config.yml
-    │   ├── gke                   # Optional subfolder with the stack name to group
-    │   │   └── gke.yml           # yaml files together if necessary.
-    │   ├── organization.yml
-    │   └── postgresql
-    │       └── postgresql.yml
-    ├── config,yml
-    ├── production
-    │   ├── gke
-    │   │   └── gke.yml
-    │   └── postgresql
-    │       └── postgresql.yml
+    │   ├── cartigan.yml
+    │   └── config.yml
     └── staging
-        ├── gke
-        │   └── gke.yml
-        └── postgresql
-            └── postgresql.yml
+        └── commerce
+            ├── gke.yml
+            └── project.yml
 </pre></div>
 </div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">generated</span></code>: folder where the stack are stored as JSON once generated.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">library</span></code>: folder where you can place custom functions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stacks</span></code>: the stacks created using TerraformPy.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vars</span></code>: the variables used to create the stacks.</p></li>
+</ul>
 </div>
 <div class="section" id="examples">
 <h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
-<p>Build a stack without an environment:</p>
+<p>Build a project stack without an environment:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tfpy</span> <span class="n">organization</span>
 </pre></div>
 </div>
-<p>Build a stack for a specific environment:</p>
+<p>Build a project stack for a specific environment:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tfpy</span> <span class="n">gke</span> <span class="n">production</span>
 </pre></div>
 </div>
