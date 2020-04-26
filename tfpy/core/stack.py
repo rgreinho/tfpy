@@ -40,7 +40,10 @@ class StackVars:
         files = self.list_variable_files()
         d = {}
         for f in files:
-            d = {**d, **yaml.safe_load(f.read_text())}
+            content = f.read_text()
+            if not content:
+                continue
+            d = {**d, **yaml.safe_load(content)}
         self.vars = d
 
     def get(self, var, default=None, separator="."):

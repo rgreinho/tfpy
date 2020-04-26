@@ -1,8 +1,8 @@
 """Define the application entrypoint."""
 import importlib.util
 import json
-import os
 from pathlib import Path
+import sys
 
 import typer
 from terraformpy import TFObject
@@ -14,25 +14,41 @@ app = typer.Typer()
 
 
 @app.command()
-def generate(stack: str, environment: str = ""):
+def generate(project: str, environment: str = ""):
     """Generate Terraform stacks."""
     # Load the stackvars.
-    stackvars = StackVars(stack, environment=environment, var_dir=os.getcwd(),)
+    stackvars = StackVars(project, environment=environment, var_dir=Path.cwd(),)
     stackvars.load()
     # print(json.dumps(stackvars.vars, indent=4, sort_keys=True))
 
-    # Import the stack.
-    spec = importlib.util.spec_from_file_location(stack, f"stacks/{stack}/main.tf.py")
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
+    # Import the libraries.
+    library = Path("library")
+    for lib in library.glob("**/*.py"):
+        # Import the libs.
+        spec = importlib.util.spec_from_file_location(lib.stem, lib)
+        module = importlib.util.module_from_spec(spec)
+        sys.modules[lib.stem] = module
+        spec.loader.exec_module(module)
 
-    # Render it.
-    render = getattr(module, "render")
-    render(stackvars)
+    # Get the project stacks.
+    s = Path("stacks")
+    for stack in s.glob("**/*.tf.py"):
+        # Import the stack.
+        spec = importlib.util.spec_from_file_location(
+            stack.name.replace("".join(stack.suffixes), ""), stack
+        )
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+
+        # Render it.
+        render = getattr(module, "render")
+        render(stackvars)
+
+    # Compile them.
     tf_json = json.dumps(TFObject.compile(), indent=4, sort_keys=True)
 
     # Prepare the output file.
-    p = Path(f"generated/{stack}")
+    p = Path(f"generated/{project}")
     if environment:
         p = p / environment
     p.mkdir(parents=True, exist_ok=True)
