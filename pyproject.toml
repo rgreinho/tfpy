@@ -31,6 +31,7 @@ python = "^3.7"
 terraformpy = "1.2.3"
 typer = "^0.1.1"
 pyyaml = "^5.3.1"
+loguru = "^0.4.1"
 
 [tool.poetry.dev-dependencies]
 bpython = "0.18"

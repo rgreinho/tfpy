@@ -1,6 +1,7 @@
 """Define the module managing the stack vars."""
 from pathlib import Path
 
+from loguru import logger
 import yaml
 
 
@@ -38,6 +39,7 @@ class StackVars:
     def load(self):
         """Load the stack variables."""
         files = self.list_variable_files()
+        logger.debug(f'Loading var files: "{files}".')
         d = {}
         for f in files:
             content = f.read_text()
