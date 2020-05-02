@@ -62,7 +62,7 @@ def generate(
 
     # Get the project stacks.
     s = Path("stacks")
-    for stack in s.glob("**/*.tf.py"):
+    for stack in s.glob(f"{project}/**/*.tf.py"):
         # Import the stack.
         logger.debug(f'Importing stack "{stack}".')
         spec = importlib.util.spec_from_file_location(

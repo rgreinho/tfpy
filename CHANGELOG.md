@@ -9,7 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add logging support to the application. [#]
+- Add logging support to the application. [#10]
+
+### Fixes
+
+- Fix the stack look up where all the stacks were loaded instead of only the stacks of a
+  specific project. [#11]
 
 ## [0.2.0] - 2020-04-26
 
@@ -30,3 +35,5 @@ First usable version of the project.
 
 [//]: # (Issue/PR links)
 [#8]: https://github.com/rgreinho/tfpy/pull/8
+[#10]: https://github.com/rgreinho/tfpy/pull/10
+[#11]: https://github.com/rgreinho/tfpy/pull/11
