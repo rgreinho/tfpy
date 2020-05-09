@@ -72,11 +72,11 @@ Examples
 
 Build a project stack without an environment::
 
-  tfpy organization
+  tfpy generate organization
 
 Build a project stack for a specific environment::
 
-  tfpy gke production
+  tfpy generate gke production
 
 
 .. _HCL: https://github.com/hashicorp/hcl

@@ -3,6 +3,8 @@ import importlib.util
 import json
 import logging
 from pathlib import Path
+import shlex
+import subprocess
 import sys
 
 from loguru import logger
@@ -43,15 +45,48 @@ def generate(
     verbose: int = typer.Option(0, "--verbose", "-v", count=True),
 ):
     """Generate Terraform stacks."""
-    # Configure logger verbosity .
-    log_level = max(INITIAL_LOG_LEVEL - verbose * 10, 0)
-    log_format = LOG_FORMAT_VERBOSE if log_level < logging.INFO else LOG_FORMAT_COMPACT
-    logger.add(sys.stderr, format=log_format, level=log_level, colorize=True)
+    # Configure logger verbosity.
+    configure_logger(verbose)
 
+    # Generate the stack.
+    generate_(project, environment)
+
+
+@app.command("list")
+def list_(detailed: bool = typer.Option(False, "--detailed")):
+    """List all the stacks and their environment(s)."""
+    stacks = stack.get_stacks()
+    if detailed:
+        for p, e in stacks.items():
+            print(f"{p}: {','.join(e)}")
+    else:
+        print(NEW_LINE.join(stacks.keys()))
+
+
+@app.command()
+def regenerate(verbose: int = typer.Option(0, "--verbose", "-v", count=True),):
+    """Regenerate all stacks."""
+    # Configure logger verbosity.
+    configure_logger(verbose)
+
+    # Get the stacks.
+    stacks = stack.get_stacks()
+
+    # Regenerate the stacks.
+    for project, environments in stacks.items():
+        for environment in environments:
+            cmd = (
+                f"tfpy generate {project} --environment {environment} {verbose * '-v '}"
+            )
+            logger.debug(cmd)
+            run(cmd, Path.cwd())
+
+
+def generate_(project, environment):
+    """."""
     # Load the stackvars.
     stackvars = StackVars(project, environment=environment, var_dir=Path.cwd(),)
     stackvars.load()
-    # print(json.dumps(stackvars.vars, indent=4, sort_keys=True))
 
     # Import the libraries.
     library = Path("library")
@@ -92,15 +127,22 @@ def generate(
     p.write_text(tf_json)
 
 
-@app.command("list")
-def list_(detailed: bool = typer.Option(False, "--detailed")):
-    """List all the stacks and their environment(s)."""
-    d = stack.get_stacks()
-    if detailed:
-        for p, e in d.items():
-            print(f"{p}: {','.join(e)}")
-    else:
-        print(NEW_LINE.join(d.keys()))
+def configure_logger(verbosity):
+    """Configure logger verbosity."""
+    log_level = max(INITIAL_LOG_LEVEL - verbosity * 10, 0)
+    log_format = LOG_FORMAT_VERBOSE if log_level < logging.INFO else LOG_FORMAT_COMPACT
+    logger.add(sys.stderr, format=log_format, level=log_level, colorize=True)
+
+
+def run(cmd, cwd):
+    """Run a shell command."""
+    output = subprocess.run(
+        shlex.split(cmd), cwd=cwd, capture_output=True, check=True, text=True
+    )
+    if output.stdout:
+        print(output.stdout)
+    if output.stderr:
+        print(output.stderr)
 
 
 if __name__ == "__main__":

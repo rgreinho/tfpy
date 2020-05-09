@@ -7,9 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## Added
+### Added
 
-- Add a command to list available stacks and their environments. [#]
+- Add a command to list available stacks and their environments. [#14]
+- Add a command to regenerate all the stacks. [#15]
 
 ## [0.3.0] - 2020-05-01
 
@@ -17,7 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add logging support to the application. [#10]
 
-### Fixes
+### Fixed
 
 - Fix the stack lookup problem where all the stacks were loaded instead of only the
   stacks of a specific project. [#11]
@@ -28,7 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add support to handle multiple stacks in one project. [#8]
 
-### Fixes
+### Fixed
 
 - Ignore empty `yml` files. [#8]
 
@@ -45,4 +46,5 @@ First usable version of the project.
 [#8]: https://github.com/rgreinho/tfpy/pull/8
 [#10]: https://github.com/rgreinho/tfpy/pull/10
 [#11]: https://github.com/rgreinho/tfpy/pull/11
-[#]: https://github.com/rgreinho/tfpy/pull/
+[#14]: https://github.com/rgreinho/tfpy/pull/14
+[#15]: https://github.com/rgreinho/tfpy/pull/15
