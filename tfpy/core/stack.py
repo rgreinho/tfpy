@@ -86,3 +86,15 @@ class StackVars:
 
         # Or raise an exception.
         raise LookupError(f"variable {var} not found.")
+
+
+def get_stacks(var_dir="vars"):
+    """Retrieve the stacks."""
+    d = {}
+    v = Path(var_dir)
+    environments = (e for e in v.iterdir() if e.is_dir() and e.name != "all")
+    for environment in environments:
+        projects = (p for p in environment.iterdir() if p.is_dir())
+        for project in projects:
+            d.setdefault(project.name, []).append(environment.name)
+    return d

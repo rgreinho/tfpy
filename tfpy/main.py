@@ -9,10 +9,13 @@ from loguru import logger
 from terraformpy import TFObject
 import typer
 
+from tfpy.core import stack
 from tfpy.core.stack import StackVars
 
 
 app = typer.Typer()
+
+NEW_LINE = "\n"
 
 # Configure logger.
 INITIAL_LOG_LEVEL = logging.WARNING
@@ -62,11 +65,11 @@ def generate(
 
     # Get the project stacks.
     s = Path("stacks")
-    for stack in s.glob(f"{project}/**/*.tf.py"):
+    for stack_ in s.glob(f"{project}/**/*.tf.py"):
         # Import the stack.
-        logger.debug(f'Importing stack "{stack}".')
+        logger.debug(f'Importing stack "{stack_}".')
         spec = importlib.util.spec_from_file_location(
-            stack.name.replace("".join(stack.suffixes), ""), stack
+            stack_.name.replace("".join(stack_.suffixes), ""), stack_
         )
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
@@ -87,6 +90,17 @@ def generate(
 
     # Save the rendered stack to the file.
     p.write_text(tf_json)
+
+
+@app.command("list")
+def list_(detailed: bool = typer.Option(False, "--detailed")):
+    """List all the stacks and their environment(s)."""
+    d = stack.get_stacks()
+    if detailed:
+        for p, e in d.items():
+            print(f"{p}: {','.join(e)}")
+    else:
+        print(NEW_LINE.join(d.keys()))
 
 
 if __name__ == "__main__":

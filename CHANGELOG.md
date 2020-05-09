@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## Added
+
+- Add a command to list available stacks and their environments. [#]
+
 ## [0.3.0] - 2020-05-01
 
 ### Added
@@ -41,3 +45,4 @@ First usable version of the project.
 [#8]: https://github.com/rgreinho/tfpy/pull/8
 [#10]: https://github.com/rgreinho/tfpy/pull/10
 [#11]: https://github.com/rgreinho/tfpy/pull/11
+[#]: https://github.com/rgreinho/tfpy/pull/
