@@ -2,6 +2,10 @@ tfpy
 ====
 
 .. image:: https://github.com/rgreinho/tfpy/workflows/ci/badge.svg
+   :target: https://github.com/rgreinho/tfpy/actions?query=workflow%3Aci
+
+.. image:: https://badge.fury.io/py/scrapd.svg
+   :target: https://badge.fury.io/py/scrapd
 
 Create Terraform resources using Python.
 
