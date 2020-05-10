@@ -2,6 +2,10 @@ tfpy
 ====
 
 .. image:: https://github.com/rgreinho/tfpy/workflows/ci/badge.svg
+   :target: https://github.com/rgreinho/tfpy/actions?query=workflow%3Aci
+
+.. image:: https://badge.fury.io/py/scrapd.svg
+   :target: https://badge.fury.io/py/scrapd
 
 Create Terraform resources using Python.
 
@@ -72,11 +76,11 @@ Examples
 
 Build a project stack without an environment::
 
-  tfpy organization
+  tfpy generate organization
 
 Build a project stack for a specific environment::
 
-  tfpy gke production
+  tfpy generate gke production
 
 
 .. _HCL: https://github.com/hashicorp/hcl

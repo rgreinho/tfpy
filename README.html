@@ -14,7 +14,7 @@
     <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Changelog" href="CHANGELOG.html" />
+    <link rel="next" title="Detailed usage" href="usage.html" />
     <link rel="prev" title="tfpy" href="index.html" />
  
 <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -35,7 +35,9 @@
             
   <div class="section" id="tfpy">
 <h1>tfpy<a class="headerlink" href="#tfpy" title="Permalink to this headline">¶</a></h1>
-<img alt="https://github.com/rgreinho/tfpy/workflows/ci/badge.svg" src="https://github.com/rgreinho/tfpy/workflows/ci/badge.svg" /><p>Create Terraform resources using Python.</p>
+<a class="reference external image-reference" href="https://github.com/rgreinho/tfpy/actions?query=workflow%3Aci"><img alt="https://github.com/rgreinho/tfpy/workflows/ci/badge.svg" src="https://github.com/rgreinho/tfpy/workflows/ci/badge.svg" /></a>
+<a class="reference external image-reference" href="https://badge.fury.io/py/scrapd"><img alt="https://badge.fury.io/py/scrapd.svg" src="https://badge.fury.io/py/scrapd.svg" /></a>
+<p>Create Terraform resources using Python.</p>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">tfpy</span></code> is a thin wrapper around <a class="reference external" href="https://github.com/NerdWalletOSS/terraformpy">terraformpy</a>, aiming at providing a well defined
@@ -93,11 +95,11 @@ For instance <code class="docutils literal notranslate"><span class="pre">genera
 <div class="section" id="examples">
 <h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
 <p>Build a project stack without an environment:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tfpy</span> <span class="n">organization</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tfpy</span> <span class="n">generate</span> <span class="n">organization</span>
 </pre></div>
 </div>
 <p>Build a project stack for a specific environment:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tfpy</span> <span class="n">gke</span> <span class="n">production</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tfpy</span> <span class="n">generate</span> <span class="n">gke</span> <span class="n">production</span>
 </pre></div>
 </div>
 </div>
@@ -138,6 +140,7 @@ For instance <code class="docutils literal notranslate"><span class="pre">genera
 <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Detailed usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
 </ul>
 
@@ -160,7 +163,7 @@ For instance <code class="docutils literal notranslate"><span class="pre">genera
       &copy;2020, Rémy Greinhofer.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.3</a>
       
       |
       <a href="_sources/README.rst.txt"
