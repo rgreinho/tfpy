@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "tfpy"
-version = "0.3.0"
+version = "0.4.0"
 description = "Create Terraform resources using Python"
 authors = ["Rémy Greinhofer <remy.greinhofer@gmail.com>"]
 license = "MIT"
@@ -29,7 +29,7 @@ classifiers = [
 [tool.poetry.dependencies]
 python = "^3.7"
 terraformpy = "1.3.0"
-typer = "^0.1.1"
+typer = "^0.2.1"
 pyyaml = "^5.3.1"
 loguru = "^0.4.1"
 
@@ -49,6 +49,7 @@ pytest-mock = "^3.1.0"
 recommonmark = "^0.6.0"
 aiohttp-theme = "^0.1.6"
 sphinx-click = "^2.3.2"
+typer-cli = "^0.0.9"
 
 [tool.poetry.scripts]
 tfpy = "tfpy.main:app"
