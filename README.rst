@@ -4,8 +4,8 @@ tfpy
 .. image:: https://github.com/rgreinho/tfpy/workflows/ci/badge.svg
    :target: https://github.com/rgreinho/tfpy/actions?query=workflow%3Aci
 
-.. image:: https://badge.fury.io/py/scrapd.svg
-   :target: https://badge.fury.io/py/scrapd
+.. image:: https://badge.fury.io/py/tfpy.svg
+   :target: https://badge.fury.io/py/tfpy
 
 Create Terraform resources using Python.
 
