@@ -25,7 +25,8 @@ confidence=
 # invalid-name                  : too complicated to configure sanely.
 # logging-format-interpolation  : does not make any sense.
 # no-self-use                   : wrong detection (i.e. pytest class tests).
-disable = broad-except,invalid-name,logging-format-interpolation,no-self-use,
+# protected-access              : not such a big deal in Python.
+disable = broad-except,invalid-name,logging-format-interpolation,no-self-use,protected-access,
 
 [REPORTS]
 
