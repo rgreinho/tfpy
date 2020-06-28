@@ -13,5 +13,6 @@ Table of contents
 
    README
    usage
+   api/modules
    CHANGELOG
 
