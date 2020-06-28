@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "tfpy"
-version = "0.5.0"
+version = "0.6.0"
 description = "Create Terraform resources using Python"
 authors = ["Rémy Greinhofer <remy.greinhofer@gmail.com>"]
 license = "MIT"

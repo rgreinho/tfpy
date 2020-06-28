@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.0] - 2020-06-28
+
+### Added
+
+- Add a function to manage users and groups. [#24]
+
 ## [0.5.0] - 2020-06-20
 
 ### Added
@@ -51,6 +57,7 @@ First usable version of the project.
 [0.3.0]: https://github.com/rgreinho/tfpy/releases/tag/0.3.0
 [0.4.0]: https://github.com/rgreinho/tfpy/releases/tag/0.4.0
 [0.5.0]: https://github.com/rgreinho/tfpy/releases/tag/0.5.0
+[0.6.0]: https://github.com/rgreinho/tfpy/releases/tag/0.6.0
 
 [//]: # (Issue/PR links)
 [#8]: https://github.com/rgreinho/tfpy/pull/8
@@ -59,3 +66,5 @@ First usable version of the project.
 [#14]: https://github.com/rgreinho/tfpy/pull/14
 [#15]: https://github.com/rgreinho/tfpy/pull/15
 [#19]: https://github.com/rgreinho/tfpy/pull/19
+[#24]: https://github.com/rgreinho/tfpy/pull/24
+
