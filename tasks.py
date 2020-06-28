@@ -43,7 +43,6 @@ def test(c):
         "--cov-report term-missing "
         "--cov-report html "
         f"--cov={PROJECT} "
-        "tests"
     )
 
 
